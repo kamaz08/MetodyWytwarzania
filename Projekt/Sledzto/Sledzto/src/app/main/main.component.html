@@ -1,0 +1,40 @@
+﻿<nav>
+  <form name="form">
+
+    <div class="form-group">
+      <a [routerLink]="['/choices']">
+        <img src="assets/images/ustaws.png">
+      </a>
+    </div>
+  </form>
+</nav>
+
+<section>
+  <div id="container">
+    <div
+      ng2-carouselamos
+      class="slides-wrapper"
+      [items]="items"
+      [width]="900"
+      [$prev]="prev"
+      [$next]="next"
+      [$item]="item"
+    >
+    </div>
+
+    <ng-template #prev>
+      <img src="assets/images/arrow1.png" id="left"/>
+    </ng-template>
+    <ng-template #next>
+      <img src="assets/images/arrow2.png" id="right"/>
+    </ng-template>
+    <ng-template #item let-item let-i="index">
+
+      <div class="items">
+        <img src="{{ item.name }}">
+      </div>
+
+    </ng-template>
+  </div>
+
+</section>

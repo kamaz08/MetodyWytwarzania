@@ -1,0 +1,15 @@
+@font-face {
+  font-family: myPacifico;
+  src: url('../../src/assets/fonts/pacifico-webfont.ttf') format('truetype');
+}
+
+* {
+  font-family: 'myPacifico';
+  font-weight:normal;
+  font-style:normal;
+}
+
+header{
+  text-align: center;
+  margin-top: -50px;
+}

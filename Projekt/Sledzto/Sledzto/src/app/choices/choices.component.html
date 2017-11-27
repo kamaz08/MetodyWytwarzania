@@ -1,0 +1,17 @@
+<nav>
+
+  <input #followUrl (keyup.enter)="follow(mail.value)"
+         (blur)="follow(mail.value); mail.value='' " value="Twój e-mail">
+
+  <button (click)="follow(mail.value)">follow</button>
+
+  <p>Pages:</p>
+
+  <table>
+    <tr *ngFor="let page of pages">
+      <td> <input type="checkbox" [(ngModel)]="page.selected">{{page.SelectedId}} /> </td>
+      <td>{{ page }}</td>
+    </tr>
+  </table>
+
+</nav>
