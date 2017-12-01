@@ -11,39 +11,35 @@ namespace Sledzto.Track
 {
     public class HashTrack : TrackBase
     {
-
         private String LastHash;
-        private HashAlgorithm sha;
 
-        public HashTrack(Website website, int time) : base(website, time)
+        public HashTrack(Option option) : base(option)
         {
-            LastHash = getHash();
+            LastHash = option.History
+                .OrderByDescending(x => x.DateTime)
+                .Select(x => x.Last)
+                .FirstOrDefault() ?? getHash();
         }
 
 
-        protected override string CheckChange()
+        protected override Mess CheckChange()
         {
             var temp = getHash();
             if (LastHash != temp)
-                return $"Zmiana na stronie {website.Name}\n pod adresem {website.Url}\n Metoda Hash\n\n Sledzto";
+                return new Mess
+                {
+                    Message = $"Zmiana na stronie {website.Name}\n pod adresem {website.Url}\n Metoda Hash\n\n Sledzto \n Czas {DateTime.Now}",
+                    Last = temp
+                };
             return null;
         }
 
         private String getHash()
         {
-            HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create(website.Url);
-            myRequest.Method = "GET";
-            string result;
-            using (WebResponse myResponse = myRequest.GetResponse())
-            {
-                myResponse.Close();
-                using (StreamReader sr = new StreamReader(myResponse.GetResponseStream(), System.Text.Encoding.UTF8))
-                {
-                    result = sr.ReadToEnd();
+            String result;
+            using (var webClient = new System.Net.WebClient())
+                result = webClient.DownloadString(website.Url);
 
-                    sr.Close();
-                }
-            }
             return getHash(result);
         }
 

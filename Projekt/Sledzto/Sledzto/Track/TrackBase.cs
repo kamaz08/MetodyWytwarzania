@@ -13,17 +13,21 @@ namespace Sledzto.Track
         protected AppDbContext db;
         private List<String> emailList;
         protected int time;
+        private bool oneTime;
+        private int optionId;
 
-        public TrackBase(Website website, int time)
+        public TrackBase(Option option)
         {
             db = new AppDbContext();
-            emailList = db.Users.Where(x => x.WebsiteId == website.Id).Select(x => x.Email).ToList();
-            this.website = website;
-            this.time = time;
-            TrackPage();
+            emailList = db.User.Where(x => x.OptionId == option.Id).Select(x => x.Email).ToList();
+
+            this.website = option.Website;
+            this.time = option.Frequency;
+            this.oneTime = option.OneTime;
+            this.optionId = option.Id;
         }
 
-        private void TrackPage()
+        public void TrackPage()
         {
             var thread = new Thread(start =>
             {
@@ -31,9 +35,19 @@ namespace Sledzto.Track
                 {
                     var mess = CheckChange();
                     if (mess != null)
-                        SendMessage(mess);
+                    {
+                        SendMessage(mess.Message);
+                        db.History.Add(new History
+                        {
+                            DateTime = DateTime.Now,
+                            Message = mess.Message,
+                            Last = mess.Last,
+                            OptionId = optionId
+                        });
 
-                    Thread.SpinWait(time);
+                        if (oneTime) break;
+                    }
+                    Thread.Sleep(1000 * 60 * time == 0 ? 1 : time);
                 }
             });
             thread.Start();
@@ -44,9 +58,16 @@ namespace Sledzto.Track
             Sender.SendEmailAsync(mess, emailList);
         }
 
-        protected virtual String CheckChange()
+        protected virtual Mess CheckChange()
         {
             return null;
         }
+
+        protected class Mess
+        {
+            public String Message { get; set; }
+            public String Last { get; set; }
+        }
+
     }
 }

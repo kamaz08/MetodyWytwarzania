@@ -120,13 +120,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\StartTracking.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201712011126325_init.cs" />
     <Compile Include="Migrations\201712011126325_init.Designer.cs">
       <DependentUpon>201712011126325_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712011135488_optionOneTime.cs" />
+    <Compile Include="Migrations\201712011135488_optionOneTime.Designer.cs">
+      <DependentUpon>201712011135488_optionOneTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712011157412_HistoryLast.cs" />
+    <Compile Include="Migrations\201712011157412_HistoryLast.Designer.cs">
+      <DependentUpon>201712011157412_HistoryLast.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="AppDbContext.cs" />
@@ -137,6 +147,10 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Website.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Track\RegexTrack.cs" />
+    <Compile Include="Track\HashTrack.cs" />
+    <Compile Include="Track\Sender.cs" />
+    <Compile Include="Track\TrackBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -153,7 +167,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
+    <Folder Include="ViewModel\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="src\app\app.component.spec.ts" />
@@ -168,6 +182,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201712011126325_init.resx">
       <DependentUpon>201712011126325_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712011135488_optionOneTime.resx">
+      <DependentUpon>201712011135488_optionOneTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712011157412_HistoryLast.resx">
+      <DependentUpon>201712011157412_HistoryLast.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

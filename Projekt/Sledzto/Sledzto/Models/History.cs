@@ -9,6 +9,7 @@ namespace Sledzto.Models
     {
         public int Id { get; set; }
         public String Message { get; set; }
+        public String Last { get; set; }
         public DateTime DateTime { get; set; }
         public int OptionId { get; set; }
         

@@ -12,6 +12,7 @@ namespace Sledzto.Models
         public TrackigTechniqueEnum TrackigTechnique { get; set; }
         public String Options { get; set; }
         public int Frequency { get; set; }
+        public bool OneTime { get; set; }
 
         public virtual Website Website { get; set; }
         public virtual ICollection<History> History { get; set; }
