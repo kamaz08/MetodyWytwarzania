@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sledzto.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,5 +17,14 @@ namespace Sledzto.Models
 
         public virtual Website Website { get; set; }
         public virtual ICollection<History> History { get; set; }
+
+        public static implicit operator OptionVM(Option model) => new OptionVM{
+            Id = model.Id,
+            WebsiteId = model.WebsiteId,
+            TrackigTechnique = model.TrackigTechnique,
+            Options = model.Options,
+            Frequency = model.Frequency,
+            OneTime = model.OneTime
+        };
     }
 }
