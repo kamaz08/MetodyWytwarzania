@@ -13,9 +13,10 @@ namespace Sledzto
         {
         }
 
-        DbSet<Option> Option { get; set; }
-        DbSet<User> User { get; set; }
-        DbSet<Website> Website { get; set; }
+        public DbSet<Option> Option { get; set; }
+        public DbSet<User> User { get; set; }
+        public DbSet<Website> Website { get; set; }
+        public DbSet<History> History { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -34,17 +35,21 @@ namespace Sledzto
 
             modelBuilder.Entity<User>()
                 .HasKey(x => x.Id)
-                .HasRequired(x => x.WebSite)
+                .HasRequired(x => x.Option)
                 .WithMany()
-                .HasForeignKey(x => x.WebsiteId);
-            
+                .HasForeignKey(x => x.OptionId);
 
+            modelBuilder.Entity<Option>()
+                .HasMany(x => x.History)
+                .WithRequired(x => x.Option)
+                .HasForeignKey(x => x.OptionId);
+
+
+            modelBuilder.Entity<History>()
+                .HasKey(x => x.Id)
+                .HasRequired(x => x.Option)
+                .WithMany()
+                .HasForeignKey(x => x.OptionId);
         }
-
-        public System.Data.Entity.DbSet<Sledzto.Models.Website> Websites { get; set; }
-
-        public System.Data.Entity.DbSet<Sledzto.Models.User> Users { get; set; }
-
-        public System.Data.Entity.DbSet<Sledzto.Models.Option> Options { get; set; }
     }
 }

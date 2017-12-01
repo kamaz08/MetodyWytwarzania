@@ -5,12 +5,13 @@ using System.Web;
 
 namespace Sledzto.Models
 {
-    public class User
+    public class History
     {
         public int Id { get; set; }
-        public String Email { get; set; }
+        public String Message { get; set; }
+        public DateTime DateTime { get; set; }
         public int OptionId { get; set; }
-        public MessageTypeEnum MessageType { get; set; }
+        
         public virtual Option Option { get; set; }
     }
 }

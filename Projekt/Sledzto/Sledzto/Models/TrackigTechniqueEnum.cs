@@ -7,6 +7,7 @@ namespace Sledzto.Models
 {
     public enum TrackigTechniqueEnum
     {
-        Hash = 1
+        Hash = 1,
+        Regex = 2,
     }
 }

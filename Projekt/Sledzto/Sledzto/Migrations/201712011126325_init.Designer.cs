@@ -13,7 +13,7 @@ namespace Sledzto.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201711162020151_init"; }
+            get { return "201712011126325_init"; }
         }
         
         string IMigrationMetadata.Source

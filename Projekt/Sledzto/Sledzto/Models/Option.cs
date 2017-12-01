@@ -10,6 +10,10 @@ namespace Sledzto.Models
         public int Id { get; set; }
         public int WebsiteId { get; set; }
         public TrackigTechniqueEnum TrackigTechnique { get; set; }
+        public String Options { get; set; }
+        public int Frequency { get; set; }
+
         public virtual Website Website { get; set; }
+        public virtual ICollection<History> History { get; set; }
     }
 }

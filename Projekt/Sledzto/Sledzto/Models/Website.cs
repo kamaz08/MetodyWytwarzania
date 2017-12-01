@@ -10,6 +10,5 @@ namespace Sledzto.Models
         public int Id { get; set; }
         public String Url { get; set; }
         public String Name { get; set; }
-        public int Frequency { get; set; }
     }
 }
