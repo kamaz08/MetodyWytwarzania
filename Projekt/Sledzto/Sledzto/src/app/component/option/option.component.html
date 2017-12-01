@@ -1,0 +1,9 @@
+﻿<mat-card>
+    <mat-card-title>Ustawienia</mat-card-title>
+    <mat-list *ngIf="Option">
+        <mat-list-item>Metoda śledzenia {{Option.TrackigTechnique}}</mat-list-item>
+        <mat-list-item>Ustawienia {{Option.Options}}</mat-list-item>
+        <mat-list-item>Czas odświerzania {{Option.Frequency}}</mat-list-item>
+        <mat-list-item *ngIf="Option.OneTime">Jednorazowo</mat-list-item>
+    </mat-list>
+</mat-card>

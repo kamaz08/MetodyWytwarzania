@@ -113,6 +113,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <TypeScriptCompile Include="src\app\component\option\option.component.ts" />
+    <Content Include="src\app\component\option\option.component.html" />
+    <TypeScriptCompile Include="src\app\component\website\website.component.ts" />
+    <TypeScriptCompile Include="src\app\component\website\websitelist.component.ts" />
+    <Content Include="src\app\component\website\website.component.html" />
+    <Content Include="src\app\component\website\websitelist.component.html" />
     <Content Include="src\favicon.ico" />
     <Content Include="src\systemjs-angular-loader.js" />
     <Content Include="src\systemjs.config.js" />
@@ -176,6 +182,10 @@
     <TypeScriptCompile Include="src\app\app.component.spec.ts" />
     <TypeScriptCompile Include="src\app\app.component.ts" />
     <TypeScriptCompile Include="src\app\app.module.ts" />
+    <TypeScriptCompile Include="src\app\models\models.ts" />
+    <TypeScriptCompile Include="src\app\service\option.service.ts" />
+    <TypeScriptCompile Include="src\app\service\user.service.ts" />
+    <TypeScriptCompile Include="src\app\service\website.service.ts" />
     <TypeScriptCompile Include="src\main.ts" />
   </ItemGroup>
   <ItemGroup>

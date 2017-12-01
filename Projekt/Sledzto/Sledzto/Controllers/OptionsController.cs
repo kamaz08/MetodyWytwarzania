@@ -25,7 +25,7 @@ namespace Sledzto.Controllers
 
 
         [HttpPost]
-        public bool AddWebsite(OptionVM model)
+        public bool AddOption(OptionVM model)
         {
             if (model == null)
                 return false;

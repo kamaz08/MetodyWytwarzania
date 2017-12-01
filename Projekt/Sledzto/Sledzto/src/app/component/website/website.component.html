@@ -1,0 +1,9 @@
+﻿<mat-card style="padding:4px">
+    <mat-toolbar>
+        <span>{{Website.Name}}</span>
+        <span style="flex: 1 1 auto;"></span>
+        <span>{{Website.Url}}</span>
+    </mat-toolbar>
+    <mat-spinner *ngIf="Loading" style="margin:auto"></mat-spinner>
+    <option *ngFor="let item of OptionList" [Option]="item"></option>
+</mat-card>
