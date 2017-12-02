@@ -49,7 +49,7 @@ namespace Sledzto.Track
 
                         if (oneTime) break;
                     }
-                    Thread.Sleep(1000 * 60 * time == 0 ? 1 : time);
+                    Thread.Sleep(1000 * 60 * (time == 0 ? 1 : time));
                 }
             });
             thread.Start();

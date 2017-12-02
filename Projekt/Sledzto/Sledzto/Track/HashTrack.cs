@@ -26,11 +26,14 @@ namespace Sledzto.Track
         {
             var temp = getHash();
             if (LastHash != temp)
+            {
+                LastHash = temp;
                 return new Mess
                 {
                     Message = $"Zmiana na stronie {website.Name}\n pod adresem {website.Url}\n Metoda Hash\n\n Sledzto \n Czas {DateTime.Now}",
                     Last = temp
                 };
+            }
             return null;
         }
 
