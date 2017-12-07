@@ -57,6 +57,9 @@ namespace Sledzto.Track
 
         private void SendMessage(String mess)
         {
+            emailList = db.User.Where(x => x.OptionId == optionId).Select(x => x.Email).ToList();
+
+
             Sender.SendEmailAsync(mess, emailList);
         }
 

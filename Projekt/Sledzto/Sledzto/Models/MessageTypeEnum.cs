@@ -7,6 +7,6 @@ namespace Sledzto.Models
 {
     public enum MessageTypeEnum
     {
-        Email = 0
+        Email = 1
     }
 }

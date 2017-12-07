@@ -12,3 +12,10 @@ export interface Option {
     Frequency: Number,
     OneTime: boolean
 }
+
+export interface WebsiteMenu {
+    Id: Number,
+    Name: String,
+    Url: String,
+    OptionList: Number[]
+}

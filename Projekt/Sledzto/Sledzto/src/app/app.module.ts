@@ -14,8 +14,8 @@ import { WebsiteService } from './service/website.service';
 import { OptionService } from './service/option.service';
 
 import { AppComponent } from './app.component';
+import { PageComponent } from './component/page/page.component';
 import { WebsiteComponent } from './component/website/website.component';
-import { WebsiteListComponent } from './component/website/websitelist.component';
 import { OptionComponent } from './component/option/option.component';
 
 @NgModule({
@@ -24,7 +24,7 @@ import { OptionComponent } from './component/option/option.component';
         MatCardModule, MatButtonModule, NoConflictStyleCompatibilityMode, MatToolbarModule,
         MatProgressSpinnerModule
     ],
-    declarations: [AppComponent, WebsiteComponent, WebsiteListComponent, OptionComponent],
+    declarations: [AppComponent, PageComponent, WebsiteComponent, OptionComponent],
     bootstrap: [AppComponent],
     providers: [
         { provide: APP_BASE_HREF, useValue: '/' },

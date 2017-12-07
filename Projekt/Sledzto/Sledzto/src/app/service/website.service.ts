@@ -10,4 +10,9 @@ export class WebsiteService {
     public GetWebsite(): Observable<any> {
         return this._http.get('/api/Website/GetWebsite');
     }
+
+    public GetListWebstite(): Observable<any> {
+        return this._http.get('/api/Website/GetListWebstite');
+    }
+
 }

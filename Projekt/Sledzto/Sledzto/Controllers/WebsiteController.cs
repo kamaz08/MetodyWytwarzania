@@ -1,4 +1,5 @@
 ﻿using Sledzto.Models;
+using Sledzto.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,18 @@ namespace Sledzto.Controllers
         public List<Website> GetWebsite()
         {
             return db.Website.ToList();
+        }
+
+        [HttpGet]
+        public List<WebsiteVM> GetListWebstite()
+        {
+            return db.Website.Select(x => new WebsiteVM
+            {
+                Id = x.Id,
+                Name = x.Name,
+                Url = x.Url,
+                OptionList = db.Option.Where(y => y.WebsiteId == x.Id).Select(y => y.TrackigTechnique).ToList()
+            }).ToList();
         }
 
 

@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 
-import { Website, Option } from './../../models/models'
+import { WebsiteMenu } from './../../models/models'
 import { OptionService } from './../../service/option.service'
 
 
@@ -9,22 +10,14 @@ import { OptionService } from './../../service/option.service'
     templateUrl: './website.component.html',
 })
 export class WebsiteComponent {
-    @Input() Website: Website = null;
+    @Input() WebsiteMenu: WebsiteMenu = null;
+    @Input() OptionId: Number = null;
+    SaveUrl: SafeUrl;
 
-    public Loading: boolean = true;
-    public OptionList: Option[];
+    constructor(private _sanitizer: DomSanitizer) { }
 
-    constructor(private _service: OptionService) { }
     ngOnInit() {
-        this.GetOptions();
-    }
-
-    GetOptions() {
-        this._service.GetOptions(this.Website.Id).subscribe(x => this.LoadOptions(x))
-    }
-
-    LoadOptions(x: Option[]) {
-        this.Loading = false;
-        this.OptionList = x;
+        this.SaveUrl = this._sanitizer.bypassSecurityTrustResourceUrl(this.WebsiteMenu.Url.toString());
     }
 }
+//this.WebsiteMenu.Url.toString()

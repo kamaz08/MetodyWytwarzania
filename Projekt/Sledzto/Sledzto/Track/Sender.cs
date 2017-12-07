@@ -20,9 +20,17 @@ namespace Sledzto.Track
             mailMsg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(message));
 
             SmtpClient smtpClient = new SmtpClient("poczta.dcsweb.pl", Convert.ToInt32(587));
-            System.Net.NetworkCredential credentials = new System.Net.NetworkCredential("wyslijto@pracadorywczatest.aspnet.pl", "***");
+            System.Net.NetworkCredential credentials = new System.Net.NetworkCredential("wyslijto@pracadorywczatest.aspnet.pl", "ZAQ!2wsx");
             smtpClient.Credentials = credentials;
-            await smtpClient.SendMailAsync(mailMsg);
+            try
+            {
+                await smtpClient.SendMailAsync(mailMsg);
+            }
+            catch (Exception e)
+            {
+
+            }
+
         }
 
         public static async void SendEmailAsync(String message, List<String> users)

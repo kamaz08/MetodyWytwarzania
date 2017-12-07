@@ -1,0 +1,27 @@
+﻿
+<div style="margin:auto">
+    <h1>looogooo</h1>
+    <h3>PWR</h3>
+</div>
+<div style="width:100%; display:inline-flex">
+    <mat-spinner *ngIf="Loading" style="margin:auto"></mat-spinner>
+    <div style="min-width:300px; width:30%;">
+        <mat-list>
+            <mat-card mat-subheader *ngFor="let page of WebsiteList" style="margin:5px">
+                <mat-card-header>
+                    <h3>{{page.Name}}</h3>
+                </mat-card-header>
+                <mat-card-content>
+                    <mat-list-item *ngFor="let item of page.OptionList" (click)="ChangePage(page, item)">
+                        <h4 mat-line>{{item}}</h4>
+                    </mat-list-item>
+                </mat-card-content>
+            </mat-card>
+        </mat-list>
+    </div>
+    <div style="min-width:500px; width:70%;">
+        <div *ngIf="childWeb && childOptionId">
+            <website [WebsiteMenu]="childWeb" [OptionId]="childOptionId"></website>
+        </div>
+    </div>
+</div>
