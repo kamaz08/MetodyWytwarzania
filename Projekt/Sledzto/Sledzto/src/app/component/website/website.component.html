@@ -1,7 +1,20 @@
 ﻿<mat-card style="padding:4px">
-    <mat-tab-group>
-        <mat-tab label="Szczegóły">Content 1</mat-tab>
-        <mat-tab label="Historia">Content 1</mat-tab>
+    <mat-tab-group #tabGroup (selectedIndexChange)="tabChanged($event)">
+        <mat-spinner *ngIf="Loading0" style="margin:auto"></mat-spinner>
+        <mat-tab label="Szczegóły">
+            <h4>Strona: {{WebsiteMenu.Name}}</h4>
+            <p>Url: {{WebsiteMenu.Url}}</p>
+            <mat-list *ngIf="Option">
+                <mat-list-item>Metoda śledzenia {{Option.TrackigTechnique}}</mat-list-item><br />
+                <mat-list-item>Ustawienia {{Option.Options}}</mat-list-item><br />
+                <mat-list-item>Czas odświerzania (w minutach) {{Option.Frequency}}</mat-list-item><br />
+                <mat-list-item *ngIf="Option.OneTime">Jednorazowo</mat-list-item><br />
+            </mat-list>
+
+        </mat-tab>
+        <mat-tab label="Historia">
+            <history [HistoryList]="History"></history>
+        </mat-tab>
         <mat-tab label="Odwiedź strone">
             <iframe [src]="SaveUrl" style="width:100%; min-height:500px"></iframe>
         </mat-tab>

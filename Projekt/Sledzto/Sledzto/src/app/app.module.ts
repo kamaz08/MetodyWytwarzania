@@ -12,11 +12,14 @@ import {
 
 import { WebsiteService } from './service/website.service';
 import { OptionService } from './service/option.service';
+import { HistoryService } from './service/history.service';
+
 
 import { AppComponent } from './app.component';
 import { PageComponent } from './component/page/page.component';
 import { WebsiteComponent } from './component/website/website.component';
 import { OptionComponent } from './component/option/option.component';
+import { HistoryComponent } from './component/history/history.component';
 
 @NgModule({
     imports: [
@@ -24,11 +27,11 @@ import { OptionComponent } from './component/option/option.component';
         MatCardModule, MatButtonModule, NoConflictStyleCompatibilityMode, MatToolbarModule,
         MatProgressSpinnerModule
     ],
-    declarations: [AppComponent, PageComponent, WebsiteComponent, OptionComponent],
+    declarations: [AppComponent, PageComponent, WebsiteComponent, OptionComponent, HistoryComponent],
     bootstrap: [AppComponent],
     providers: [
         { provide: APP_BASE_HREF, useValue: '/' },
-        WebsiteService, OptionService
+        WebsiteService, OptionService, HistoryService
     ],
 })
 export class AppModule { }

@@ -19,3 +19,8 @@ export interface WebsiteMenu {
     Url: String,
     OptionList: Number[]
 }
+
+export interface History {
+    Message: String,
+    DateTime: String
+}

@@ -23,6 +23,12 @@ namespace Sledzto.Controllers
                 .ToList();
         }
 
+        [HttpGet]
+        public OptionVM GetOption(int id)
+        {
+            return db.Option.Where(x => x.Id == id)
+                .FirstOrDefault();
+        }
 
         [HttpPost]
         public bool AddOption(OptionVM model)

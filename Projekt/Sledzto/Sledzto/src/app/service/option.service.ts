@@ -10,4 +10,8 @@ export class OptionService {
     public GetOptions(websiteId: Number): Observable<any> {
         return this._http.get('/api/Options/GetOptions?websiteId=' + websiteId);
     }
+
+    public GetOption(id: Number): Observable<any> {
+        return this._http.get('/api/Options/GetOption?id=' + id);
+    }
 }
