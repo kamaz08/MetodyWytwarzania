@@ -4,16 +4,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoConflictStyleCompatibilityMode } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+
 
 import {
-    MatTabsModule, MatInputModule, MatCardModule, MatButtonModule, MatToolbarModule, MatProgressSpinnerModule
+    MatTabsModule, MatInputModule, MatCardModule, MatButtonModule, MatToolbarModule, MatProgressSpinnerModule, MatDialogModule
 } from '@angular/material';
 
 
 import { WebsiteService } from './service/website.service';
 import { OptionService } from './service/option.service';
 import { HistoryService } from './service/history.service';
-
+import { UserService } from './service/user.service';
 
 import { AppComponent } from './app.component';
 import { PageComponent } from './component/page/page.component';
@@ -25,13 +28,14 @@ import { HistoryComponent } from './component/history/history.component';
     imports: [
         BrowserModule, HttpClientModule, BrowserAnimationsModule, MatTabsModule, MatInputModule,
         MatCardModule, MatButtonModule, NoConflictStyleCompatibilityMode, MatToolbarModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule, MatDialogModule, FormsModule, ReactiveFormsModule
     ],
+    exports: [],
     declarations: [AppComponent, PageComponent, WebsiteComponent, OptionComponent, HistoryComponent],
     bootstrap: [AppComponent],
     providers: [
         { provide: APP_BASE_HREF, useValue: '/' },
-        WebsiteService, OptionService, HistoryService
+        WebsiteService, OptionService, HistoryService, UserService
     ],
 })
 export class AppModule { }

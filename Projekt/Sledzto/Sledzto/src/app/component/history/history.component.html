@@ -1,5 +1,8 @@
-﻿<div *ngFor="let item of List">
-    <p>{{item.Message}}</p>
-    <br />
-    <p>{{item.DateTime}}</p>
-</div>
+﻿<mat-card *ngFor="let item of List" class="example-card" style="margin:20px">
+    <mat-card-header>
+        <mat-card-title><h3>{{item.DateTime}}</h3></mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <p>{{item.Message}}</p>
+    </mat-card-content>
+</mat-card>

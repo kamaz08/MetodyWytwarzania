@@ -14,7 +14,7 @@ namespace Sledzto.Controllers
 
 
         [HttpGet]
-        public void Subscribe(int optionId, String email, MessageTypeEnum type)
+        public void Subscribe(int optionId, String email, MessageTypeEnum type = MessageTypeEnum.Email)
         {
             db.User.Add(new Models.User
             {

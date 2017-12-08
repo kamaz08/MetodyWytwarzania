@@ -4,6 +4,10 @@ import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browse
 import { WebsiteMenu, Option, History } from './../../models/models'
 import { OptionService } from './../../service/option.service'
 import { HistoryService } from './../../service/history.service'
+import { UserService } from './../../service/user.service'
+import { MatDialogRef } from "@angular/material/dialog";
+import { FormControl, Validators } from '@angular/forms';
+
 
 @Component({
     selector: 'website',
@@ -18,8 +22,19 @@ export class WebsiteComponent {
     public Loading0: boolean = true;
     public Loading1: boolean = true;
     History: History[] = [];
+    email = new FormControl('', [Validators.required, Validators.email]);
 
-    constructor(private _sanitizer: DomSanitizer, private _serviceOpt: OptionService, private _serviceHis: HistoryService) { }
+    getErrorMessage() {
+        return this.email.hasError('required') ? 'Podaj adres' :
+            this.email.hasError('email') ? 'Nie poprawny adres' : '';
+    }
+    Sub() {
+        if (this.getErrorMessage() == '')
+            this._serviceUser.Subscribe(this.OptionId, this.email.value).subscribe();
+
+    }
+
+    constructor(private _sanitizer: DomSanitizer, private _serviceOpt: OptionService, private _serviceHis: HistoryService, private _serviceUser: UserService) { }
 
     ngOnInit() {
 
@@ -32,7 +47,7 @@ export class WebsiteComponent {
     tabChanged = (tabChangeEvent: any): void => {
         this.currentTab = tabChangeEvent;
         this.LoadSpecyficData(this.currentTab);
-        
+
     }
 
     LoadSpecyficData(tab: Number) {
@@ -59,10 +74,11 @@ export class WebsiteComponent {
 
     getHistory(optionId: Number) {
         this.Loading1 = true;
+        this.History = [];
         this._serviceHis.GetHistory(optionId).subscribe(x => {
             this.Loading1 = false;
             this.History = x;
         });
     }
+
 }
-//this.WebsiteMenu.Url.toString()

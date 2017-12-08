@@ -14,26 +14,28 @@ export class PageComponent {
 
     public childWeb: WebsiteMenu = null;
     public childOptionId: Number = null;
+    public fullImagePath: string;
 
     constructor(private _service: WebsiteService) { }
-    ngOnInit() {
-        this.GetWebsiteList();
+        ngOnInit() {
+            this.fullImagePath = './logo.png';
+            this.GetWebsiteList();
+        }
+
+
+        GetWebsiteList() {
+            this.Loading = true;
+            this._service.GetListWebstite().subscribe(x => this.SetWebsiteList(x));
+        }
+
+        SetWebsiteList(data: WebsiteMenu[]) {
+            this.Loading = false;
+            this.WebsiteList = data;
+        }
+
+        ChangePage(page: WebsiteMenu, optionId: Number) {
+            this.childWeb = page;
+            this.childOptionId = optionId;
+        }
+
     }
-
-
-    GetWebsiteList() {
-        this.Loading = true;
-        this._service.GetListWebstite().subscribe(x => this.SetWebsiteList(x));
-    }
-
-    SetWebsiteList(data: WebsiteMenu[]) {
-        this.Loading = false;
-        this.WebsiteList = data;
-    }
-
-    ChangePage(page: WebsiteMenu, optionId: Number) {
-        this.childWeb = page;
-        this.childOptionId = optionId;
-    }
-
-}

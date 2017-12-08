@@ -122,6 +122,7 @@
     <Content Include="src\app\component\page\page.component.html" />
     <Content Include="src\app\component\website\website.component.html" />
     <Content Include="src\favicon.ico" />
+    <Content Include="src\logo.png" />
     <Content Include="src\systemjs-angular-loader.js" />
     <Content Include="src\systemjs.config.js" />
     <Content Include="Web.config" />

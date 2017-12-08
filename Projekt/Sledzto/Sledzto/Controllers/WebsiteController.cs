@@ -28,7 +28,7 @@ namespace Sledzto.Controllers
                 Id = x.Id,
                 Name = x.Name,
                 Url = x.Url,
-                OptionList = db.Option.Where(y => y.WebsiteId == x.Id).Select(y => y.TrackigTechnique).ToList()
+                OptionList = db.Option.Where(y => y.WebsiteId == x.Id).Select(y => new OptionShortVM { Id = y.Id, Technique = y.TrackigTechnique }).ToList()
             }).ToList();
         }
 

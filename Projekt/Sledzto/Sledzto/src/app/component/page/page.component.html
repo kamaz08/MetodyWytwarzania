@@ -1,6 +1,6 @@
 ﻿
-<div style="margin:auto">
-    <h1>looogooo</h1>
+<div style="margin:auto;">
+    <img [src]="fullImagePath" style="height:150px">
     <h3>PWR</h3>
 </div>
 <div style="width:100%; display:inline-flex">
@@ -12,16 +12,24 @@
                     <h3>{{page.Name}}</h3>
                 </mat-card-header>
                 <mat-card-content>
-                    <mat-list-item *ngFor="let item of page.OptionList" (click)="ChangePage(page, item)">
-                        <h4 mat-line>{{item}}</h4>
+                    <mat-list-item *ngFor="let item of page.OptionList" >
+                        <button mat-raised-button color="warn" (click)="ChangePage(page, item.Id)" style="margin-bottom:5px">{{item.Technique == 1 ? 'Metoda Haszowa' : 'Metoda Regex'}}</button>
                     </mat-list-item>
                 </mat-card-content>
             </mat-card>
         </mat-list>
     </div>
-    <div style="min-width:500px; width:70%;">
+    <div style="min-width:500px; width:70%; margin-top:5px;">
         <div *ngIf="childWeb && childOptionId">
-            <website [WebsiteMenu]="childWeb" [OptionId]="childOptionId"></website>
+            <website #page [WebsiteMenu]="childWeb" [OptionId]="childOptionId"></website>
         </div>
+        <mat-card *ngIf="!childWeb && !childOptionId" >
+            <h3>Autorzy:</h3>
+            <p>Kamil Sikorski</p>
+            <br />
+            <p>Bartek Wojciechowski</p>
+            <br />
+            <p>Marcin Sosiński </p>
+        </mat-card>
     </div>
 </div>

@@ -11,6 +11,12 @@ namespace Sledzto.ViewModel
         public int Id { get; set; }
         public String Name { get; set; }
         public String Url { get; set; }
-        public List<TrackigTechniqueEnum> OptionList { get; set; }
+        public List<OptionShortVM> OptionList { get; set; }
+    }
+
+    public class OptionShortVM
+    {
+        public TrackigTechniqueEnum Technique { get; set; }
+        public int Id { get; set; }
     }
 }

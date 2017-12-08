@@ -1,11 +1,11 @@
-﻿<mat-card style="padding:4px">
+﻿<mat-card style="padding:4px; padding-bottom:20px">
     <mat-tab-group #tabGroup (selectedIndexChange)="tabChanged($event)">
         <mat-spinner *ngIf="Loading0" style="margin:auto"></mat-spinner>
         <mat-tab label="Szczegóły">
             <h4>Strona: {{WebsiteMenu.Name}}</h4>
             <p>Url: {{WebsiteMenu.Url}}</p>
             <mat-list *ngIf="Option">
-                <mat-list-item>Metoda śledzenia {{Option.TrackigTechnique}}</mat-list-item><br />
+                <mat-list-item>Metoda śledzenia: {{Option.TrackigTechnique == 1 ? 'Metoda Haszowa' : 'Metoda Regex'}}</mat-list-item><br />
                 <mat-list-item>Ustawienia {{Option.Options}}</mat-list-item><br />
                 <mat-list-item>Czas odświerzania (w minutach) {{Option.Frequency}}</mat-list-item><br />
                 <mat-list-item *ngIf="Option.OneTime">Jednorazowo</mat-list-item><br />
@@ -19,4 +19,11 @@
             <iframe [src]="SaveUrl" style="width:100%; min-height:500px"></iframe>
         </mat-tab>
     </mat-tab-group>
+    <mat-card-actions>
+        <button mat-raised-button color="primary" style="margin-left:15px" (click)="Sub()">Dołącz</button>
+        <mat-form-field>
+            <input matInput placeholder="Podaj swój adres pocztowy" [formControl]="email" required>
+            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+    </mat-card-actions>
 </mat-card>

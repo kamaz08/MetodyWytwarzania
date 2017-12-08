@@ -17,7 +17,12 @@ export interface WebsiteMenu {
     Id: Number,
     Name: String,
     Url: String,
-    OptionList: Number[]
+    OptionList: OptionShort[]
+}
+
+export interface OptionShort {
+    Id: Number,
+    Technique : Number
 }
 
 export interface History {

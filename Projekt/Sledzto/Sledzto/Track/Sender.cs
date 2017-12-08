@@ -14,13 +14,13 @@ namespace Sledzto.Track
             MailMessage mailMsg = new MailMessage();
             mailMsg.To.Add(new MailAddress(email));
 
-            mailMsg.From = new MailAddress("wyslijto@pracadorywczatest.aspnet.pl", "Praca dorywcza - nie odpisuj");
+            mailMsg.From = new MailAddress("sledzto@pracadorywczatest.aspnet.pl", "sledz - nie odpisuj");
 
             mailMsg.Subject = "Zmiana";
             mailMsg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(message));
 
             SmtpClient smtpClient = new SmtpClient("poczta.dcsweb.pl", Convert.ToInt32(587));
-            System.Net.NetworkCredential credentials = new System.Net.NetworkCredential("wyslijto@pracadorywczatest.aspnet.pl", "ZAQ!2wsx");
+            System.Net.NetworkCredential credentials = new System.Net.NetworkCredential("sledzto@pracadorywczatest.aspnet.pl", "ZAQ!2wsx");
             smtpClient.Credentials = credentials;
             try
             {
